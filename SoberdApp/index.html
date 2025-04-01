@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoberdApp - Web3 Decentralized Recovery</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SoberdApp</h1>
+            <div id="auth-section">
+                <button id="login-btn" class="btn">Login with Internet Identity</button>
+                <div id="user-info" class="hidden">
+                    <span id="username"></span>
+                    <button id="logout-btn" class="btn">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id="app-content" class="hidden">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="chat">Support Chat</button>
+                    <button class="tab-btn" data-tab="reminders">Medication</button>
+                    <button class="tab-btn" data-tab="appointments">Appointments</button>
+                    <button class="tab-btn" data-tab="progress">Progress</button>
+                </div>
+
+                <div id="chat-tab" class="tab-content active">
+                    <div id="chat-container">
+                        <div id="chat-messages"></div>
+                        <div class="chat-input">
+                            <textarea id="user-message" placeholder="How are you feeling today?"></textarea>
+                            <button id="send-btn" class="btn">Send</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="reminders-tab" class="tab-content">
+                    <h2>Medication Reminders</h2>
+                    <div id="reminders-list"></div>
+                    <form id="add-reminder-form">
+                        <input type="text" id="med-name" placeholder="Medication name" required>
+                        <input type="time" id="med-time" required>
+                        <input type="number" id="med-dosage" placeholder="Dosage (mg)" required>
+                        <button type="submit" class="btn">Add Reminder</button>
+                    </form>
+                </div>
+
+                <div id="appointments-tab" class="tab-content">
+                    <h2>Doctor Appointments</h2>
+                    <div id="appointments-list"></div>
+                    <form id="add-appointment-form">
+                        <input type="text" id="doctor-name" placeholder="Doctor name" required>
+                        <input type="datetime-local" id="appointment-time" required>
+                        <textarea id="appointment-notes" placeholder="Notes"></textarea>
+                        <button type="submit" class="btn">Add Appointment</button>
+                    </form>
+                </div>
+
+                <div id="progress-tab" class="tab-content">
+                    <h2>Recovery Progress</h2>
+                    <div class="progress-stats">
+                        <div class="stat-card">
+                            <h3>Days Sober</h3>
+                            <p id="days-sober">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Chat Sessions</h3>
+                            <p id="chat-sessions">0</p>
+                        </div>
+                    </div>
+                    <canvas id="progress-chart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
